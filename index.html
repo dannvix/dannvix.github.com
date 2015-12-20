@@ -1,4 +1,5 @@
-<!Doctype html>
+<
+doctype html>
 <html>
 <head>
   <title>#owo.tw</title>
@@ -31,16 +32,22 @@
       color: #434343;
       font-size: 125%;
       -webkit-transition: color .314159265359s;
+         -moz-transition: color .314159265359s;
+              transition: color .314159265359s;
     }
     h1 span:hover {
       color: #d0104c;
       -webkit-transition: color .141421356237s;
+         -moz-transition: color .141421356237s;
+              transition: color .141421356237s;
       cursor: pointer;
     }
     a {
       color: #3a3a3a;
       text-decoration: none;
       -webkit-transition: color .314159265359s;
+         -moz-transition: color .314159265359s;
+              transition: color .314159265359s;
       font-weight: bold;
     }
     a:hover {
@@ -49,41 +56,44 @@
     }
     #label {
       background: #bdc0ba;
-      -webkit-border-radius: .5em;
       position: fixed;
       padding: .314159265359em;
       font-size: .75em;
       border: 1px #bdc0ba solid;
       color: #000;
       opacity: 0;
+      -webkit-border-radius: .5em;
+         -moz-border-radius: .5em;
+              border-radius: .5em;
       -webkit-transition: opacity .1s;
+         -moz-transition: opacity .1s;
+              transition: opacity .1s;
     }
   </style>
-  <script type="text/javascript">
-    showLabel = function() {
-      var label = document.getElementById("label");
-      label.style.opacity = ".33";
-    };
-
-    hideLabel = function() {
-      var label = document.getElementById("label");
-      label.style.opacity = "0";
-    };
-
-    moveLabel = function() {
-      var label = document.getElementById("label");
-      var event = window.event;
-      label.style.top  = (event.clientY - 10) + "px";
-      label.style.left = (event.clientX + 15) + "px";
-    };
-  </script>
 </head>
 <body>
   <div class="container">
-    <h1>#<span onmouseover="showLabel();" onmouseout="hideLabel();" onmousemove="moveLabel();">owo</span>-tw</h1>
+    <h1>#<span id="owo">owo</span>-tw</h1>
     <p><a href="mailto:contact@owo.tw">☁ CONTACT ☁</a></p>
     <div id="label">I am watching you ♥</div>
   </div>
+
+  <script type="text/javascript">
+    (function() {
+      var owoElem = document.getElementById("owo");
+      var labelElem = document.getElementById("label");
+      owoElem.addEventListener("mouseover", function() {
+        labelElem.style.opacity = ".5";
+      }, false);
+      owoElem.addEventListener("mouseout", function() {
+        labelElem.style.opacity = "0";
+      }, false);
+      owoElem.addEventListener("mousemove", function(evt) {
+        labelElem.style.top = (evt.clientY - 10) + "px";
+        labelElem.style.left = (evt.clientX + 15) + "px";
+      }, false);
+    })();
+  </script>
 
   <!-- Google Analytics agent -->
   <script type="text/javascript">
